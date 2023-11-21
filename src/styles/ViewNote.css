@@ -1,0 +1,60 @@
+.viewNote-container{
+    padding: 10px 20px;
+    width: 75vw;
+    height: 80vh;
+}
+.viewNote-con2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80vh;
+}
+.viewNote-con2 input, .viewNote-con2 textarea{
+    margin: 15px 10px;
+    width: 80%;
+    border: none;
+    background-color: #242424;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #fff;
+}
+.viewNote-con2 input:focus, .viewNote-con2 textarea:focus{
+    outline: none;
+}
+.viewNote-input2{
+    height: 60vh;
+}
+.viewNote-con2 button{
+    padding: 8px 15px;
+    border-radius: 8px;
+    background-color: #242424;
+    border: none;
+    color: #fff;
+}
+.viewNote-container button{
+    padding: 8px 15px;
+    border-radius: 8px;
+    background-color: #242424;
+    border: none;
+    margin-top: 10px;
+    color: #fff;
+}
+
+@media screen and (max-width: 1050px) {
+    .viewNote-container{
+        width: 100%;
+    }
+}
+
+
+
+@media screen and (max-width: 480px) {
+    .viewNote-container button{
+        padding: 5px 12px;
+        font-size: 12px;
+        margin-top: 15px;
+    }
+}
+

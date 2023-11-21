@@ -1,0 +1,135 @@
+.home-container{
+    width: 75vw;
+    height: 80vh;
+}
+.home-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+}
+.home-header h3{
+    font-size: 25px;
+}
+.home-create-btn button {
+    cursor: pointer;
+    border: none;
+    background-color: #040404;
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 120px;
+}
+.home-create-folder{
+    position: absolute;
+    right: 0vw;
+    top: 60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    color: #d0d3d4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #242424;
+}
+.home-create-folder i{
+    font-size: 80px;
+}
+.home-create-folder input{
+    height: 25px;
+    width: 130px;
+    border-radius: 8px;
+    border: none;
+    padding: 0px 5px;
+}
+.home-create-folder input:focus{
+    outline: none;
+}
+.home-create-folder button{
+    background-color: #d0d3d4;
+    color: #242424;
+    width: 70px;
+}
+.home-body{
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow: scroll;
+    width: 100%;
+    min-height: 35%;
+    margin: 20px 10px 0px 0px;
+}
+.home-body::-webkit-scrollbar{
+    display: none;
+}
+.home-folder{
+    text-decoration: none;
+    color: #242424;
+    width: 100px;
+    text-align: center;
+    margin: 10px;
+}
+.home-folder i{
+    font-size: 60px;
+}
+.home-folder p{
+    margin: 5px 0px 0px;
+    font-size: 12px;
+}
+
+
+@media screen and (max-width: 1050px) {
+    .home-container{
+        width: 98vw;
+    }
+    .home-create-folder{
+        right: 2.5vw;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .home-header h3{
+        font-size: 20px;
+    }
+    .home-create-btn button {
+        padding: 5px 10px;
+        font-size: 10px;
+        width: 100px;
+    }
+    .home-create-folder{
+        width: 150px;
+        height: 150px;
+        top: 40px;
+    }
+    .home-create-folder i{
+        font-size: 60px;
+    }
+    .home-create-folder input{
+        height: 20px;
+        width: 100px;
+        border-radius: 5px;
+        border: none;
+        font-size: 12px;
+        padding: 0px 5px;
+    }
+    .home-create-folder button{
+        background-color: #d0d3d4;
+        color: #242424;
+        width: 50px;
+    }
+    .home-folder i{
+        font-size: 50px;
+    }
+    .home-folder p{
+        margin: 3px 0px 0px;
+        font-size: 10px;
+    }
+}

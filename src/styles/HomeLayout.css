@@ -1,0 +1,126 @@
+.homeLayout-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+}
+.homeLay-topNav{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 78vw;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+    background-color: #040404;
+    align-items: center;
+}
+.homeLay-search{
+    width: 40%;
+}
+.homeLay-search input{
+    width: 100%;
+    height: 30px;
+    padding: 0px 10px;
+    border-radius: 12px;
+    border: none;
+}
+.homeLay-search input:focus{
+    outline: none;
+}
+.homeLay-userPreference{
+    display: flex;
+    color: #fff;
+    width: 10%;
+    justify-content: space-between;
+    align-items: center;
+}
+.homeLay-selectFont{
+    position: absolute;
+    right: 10px;
+    top: 80px;
+    height: 80px;
+    width: 180px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+.homeLay-body{
+    height: 85%;
+    position: fixed;
+    left: 23vw;
+    top: 11vh;
+    width: 75%;
+    overflow-y: scroll;
+}
+.fa-sun, .fa-moon{
+    cursor: pointer;
+    font-size: 20px;
+}
+.homeLay-body::-webkit-scrollbar{
+    display: none;
+}
+.homeLay-bars{
+    display: none;
+}
+
+
+@media screen and (max-width : 1120px) {
+    .homeLay-userPreference{
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .homeLay-topNav{
+        width: 100vw;
+    }
+    .homeLay-userPreference{
+        width: 18%;
+    }
+    .homeLay-body{
+        left: 0vw;
+    top: 11vh;
+    width: 100%;
+    }
+    .homeLay-bars{
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    
+}
+
+@media screen and (max-width : 680px) {
+    .homeLay-topNav{
+        padding: 0px 20px;
+    }
+    .homeLay-userPreference{
+        width: 25%;
+    }
+}
+@media screen and (max-width : 570px) {
+    .homeLay-userPreference{
+        width: 32%;
+        font-size: 12px;
+    }
+    .homeLay-bars{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width : 480px) {
+    .homeLay-topNav{
+        padding: 0px 15px;
+    }
+    .homeLay-userPreference{
+        width: 30%;
+    }
+    .homeLay-search{
+        width: 50%;
+    }
+}

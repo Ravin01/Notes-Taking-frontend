@@ -1,0 +1,57 @@
+.preloader-container{
+    font-family: cursive;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #040404;
+    flex-direction: column;
+  }
+  .preloader-icon{
+    height: 250px;
+    width: 250px;
+    margin-bottom: 5vw;
+  }
+  .preloader-mail{
+    color: #d0d3d4;
+    margin-top: 4vw;
+  }
+  .loader{
+    display: block;
+    position: relative;
+    height: 12px;
+    width: 60%;
+    border: 2px solid #d0d3d4;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .loader:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: #d0d3d4;
+    animation: 2.5s prog ease-in;
+  }
+  
+  @keyframes prog {
+    to  {   width: 100%;}
+  }
+  
+  @media screen and (max-width:480px) {
+    .preloader-mail{
+      font-size: 22px;
+      margin-top: 10vw;
+    }
+    .loader{
+      width: 80%;
+    }
+    .preloader-icon{
+      height: 150px;
+      width: 150px;
+      margin-bottom: 15vw;
+    }
+  }

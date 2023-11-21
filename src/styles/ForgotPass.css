@@ -1,0 +1,128 @@
+.forgot-container{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: #D0D3D4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.forgot-form{
+    height: 350px;
+    width: 350px;
+    display: flex;
+    /* border: 1px solid #2ECC71; */
+    background-color: #343434;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+}
+
+.forgot-head{
+    font-size: 25px;
+    padding-bottom: 40px;
+}
+
+.forgot-para{
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+}
+
+.forgot-in{
+    width: 280px;
+    height: 40px;
+    border-radius: 18px;
+    padding: 12px;
+    background: #D0D3D4;
+    font-weight: 700;
+    border: none;
+}
+
+.forgot-in:focus{
+    outline: none;
+    border: 1px solid #040404;
+    box-shadow: 5px 5px 15px #040404;
+}
+
+.forgot-btn{
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #d0d3d4;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.forgot-hold{
+    position: absolute;
+    bottom: 50px;
+    height: 25px;
+    width: 130px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: transparent;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+.forgot-hold-p{
+    color: #f3f3f3;
+    font-size: 16px;
+}
+.forgot-loading {
+    border: 2px solid #242424;
+    border-top: 2px solid #f3f3f3;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1.5s linear infinite;
+  }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+@media screen and (max-width : 460px) {
+    .forgot-form{
+    height: 320px;
+    width: 300px;
+    }
+    .forgot-form h2{
+        font-size: 20px;
+    }
+    .forgot-head{
+        font-size: 23px;
+        padding-bottom: 20px;
+    }
+    .forgot-para{
+        font-size: 13px;
+        text-align: center;
+        margin: 20px 0px 0px 0px;
+    }
+    .forgot-in{
+        width: 240px;
+        height: 40px;
+        border-radius: 18px;
+        padding: 12px;
+        background: #D0D3D4;
+        font-weight: 700;
+    }
+    .forgot-btn{
+        font-size: 14px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 700;
+    }
+    .forgot-hold{
+        font-size: 13px;
+    }
+
+}
