@@ -17,8 +17,9 @@ const Page404 = () => {
           padding : '8px 15px',
           backgroundColor : '#242424',
           color : '#fff',
-          textDecoration : 'none'
-        }}></Link>
+          textDecoration : 'none',
+          borderRadius : '8px'
+        }}>Go back</Link>
     </div>
   )
 }
