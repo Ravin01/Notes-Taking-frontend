@@ -87,7 +87,7 @@ const StickyNotes = ({isStickAdded, setStickAdded}) => {
               <p className="sticky-note-p">{d.note}</p>
             </Link>
             <div className="sticky-note-bottom">
-              <p>time</p>
+              {/* <p>time</p> */}
               <Link  to={`/StickyNotes/edit?id=${d.id}`} className="sticky-edit-link"  style={{
                 color : themeWhite
               }} >

@@ -13,6 +13,7 @@ import UpdateNote from "../../components/UpdateNote";
 import { useEffect, useState } from "react";
 import { ThemeContext } from "../../stateManagment/Context";
 
+
 const HomeLayout = () => {
   const [bars, setBars] = useState('bars')
   const [sideNavClass, setSideNavClass] = useState('sideNav-container')
