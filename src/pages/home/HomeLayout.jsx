@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import {  Route, Routes, useNavigate } from "react-router-dom";
 
 import SideNav from "../../components/SideNav";
 import "../../styles/HomeLayout.css";
@@ -23,6 +23,8 @@ const HomeLayout = () => {
   const [themeIcon, setThemeIcon] = useState('sun')
   const [themeBlack, setThemeBlack] = useState('#242424')
   const [themeWhite, setThemeWhite] = useState('#d0d3d4')
+
+  const navigate = useNavigate(); 
 
   const [viewFont, setViewFont] = useState(false)
 const [font, setFont] = useState('cursive')
@@ -106,7 +108,7 @@ const handleSetFont3 = ()=>{
             <Route path="/StickyNotes/view" element={<ViewNote  />} />
             <Route path="/StickyNotes/edit" element={<UpdateNote />} />
             <Route path="/ImportantNotes" element={<ImportantNotes />} />
-            <Route path="/*" element={<Navigate to="/Page404" />} />
+            <Route path="/*" element={navigate('/page404')} />
           </Routes>
           </ThemeContext.Provider>
           

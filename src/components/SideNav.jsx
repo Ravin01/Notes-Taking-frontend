@@ -7,6 +7,8 @@ import { backEndUrl } from "../../config.js";
 const SideNav = ({sideNavClass, setSideNavClass, setBars}) => {
   const [name, setName] = useState("");
 
+  const [isCreated, setCreated] = useState(false)
+
 const handleClickLink = ()=>{
   setSideNavClass('sideNav-container')
   setBars('bars')
@@ -39,6 +41,7 @@ const handleClickLink = ()=>{
     const folder = await response.json()
     let trimFolder = folder.folders.slice(3)
     setFolders(trimFolder)
+    setCreated(!isCreated)
   }
 
 
@@ -46,7 +49,7 @@ const handleClickLink = ()=>{
   useEffect(() => {
     user();
     getFolders()
-  }, []);
+  }, [isCreated]);
 
   if (logout === true) {
     return <Navigate to={"/normalUser"} />;

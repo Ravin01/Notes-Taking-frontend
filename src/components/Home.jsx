@@ -44,6 +44,7 @@ const [isCreated, setCreated] = useState(false)
       setFolderName({
         folder: "",
       });
+      alert('new folders are not working, will working on it')
       setCreated(!isCreated)
       setShowCreateFolder(false);
     } catch (err) {
