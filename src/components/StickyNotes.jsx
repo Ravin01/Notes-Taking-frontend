@@ -95,7 +95,7 @@ const StickyNotes = ({isStickAdded, setStickAdded}) => {
             </Link>
             <div className="sticky-note-bottom">
               <p>
-              {`${new Date(d.date).getFullYear()}/${new Date(d.date).getMonth()+1}/${new Date(d.date).getDate()},${new Date(d.date).getHours()}:${new Date(d.date).getMinutes()}`}
+              {/* {`${new Date(d.date).getFullYear()}/${new Date(d.date).getMonth()+1}/${new Date(d.date).getDate()},${new Date(d.date).getHours()}:${new Date(d.date).getMinutes()}`} */}
               </p>
               <Link  to={`/StickyNotes/edit?id=${d.id}`} className="sticky-edit-link"  style={{
                 color : themeWhite
