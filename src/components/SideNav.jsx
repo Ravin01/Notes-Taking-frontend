@@ -4,7 +4,7 @@ import "../styles/SideNav.css";
 import { Link, Navigate } from "react-router-dom";
 import { backEndUrl } from "../../config.js";
 
-const SideNav = ({sideNavClass, setSideNavClass, setBars}) => {
+const SideNav = ({sideNavClass, setSideNavClass, setBars, setFolderRoute}) => {
   const [name, setName] = useState("");
 
   const [isCreated, setCreated] = useState(false)
@@ -41,6 +41,7 @@ const handleClickLink = ()=>{
     const folder = await response.json()
     let trimFolder = folder.folders.slice(3)
     setFolders(trimFolder)
+    setFolderRoute(trimFolder)
     setCreated(!isCreated)
   }
 
@@ -86,7 +87,7 @@ const handleClickLink = ()=>{
             <i className="fa-solid fa-star"></i>
           </Link>
           {folders.map((d,i)=>(
-            <Link to='ImportantNotes' className="sideNav-folders-link" key={i} onClick={handleClickLink} >
+            <Link to={`/${d}`} className="sideNav-folders-link" key={i} onClick={handleClickLink} >
             <p>{d}</p>
             <i className="fa-solid fa-folder"></i>
           </Link>

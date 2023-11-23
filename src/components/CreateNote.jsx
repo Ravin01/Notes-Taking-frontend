@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 import "../styles/ViewNote.css";
 import { backEndUrl } from "../../config.js";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThemeContext } from "../stateManagment/Context.jsx";
@@ -20,6 +20,12 @@ const CreateNote = ({isStickAdded, setStickAdded}) => {
     color : themeWhite
   }
 
+
+    // Accessing the current URL
+    const location = useLocation();
+    const currentURL = location.pathname;
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNote({ ...note, [name]: value });
@@ -28,8 +34,9 @@ const CreateNote = ({isStickAdded, setStickAdded}) => {
     const { userEmail, accessToken } = JSON.parse(sessionStorage.getItem("user"));
     const dataSet = {
       userEmail: userEmail,
-      notes: [note],
+      notes: [{...note, folder : `${currentURL}`}],
     };
+    console.log(dataSet)
     e.preventDefault();
     try {
       const newNote = await fetch(`${backEndUrl}/notes`, {

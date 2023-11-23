@@ -74,8 +74,9 @@
   }
 .sticky-note-bottom p{
     position: absolute;
-    left: 20px;
+    left: 10px;
     bottom: 10px;
+    font-size: 10px;
 }
 .sticky-note-bottom button{
     position: absolute;
@@ -124,7 +125,7 @@
         font-size: 14px;
     }
     .sticky-note-bottom p{
-        font-size: 12px;
+        font-size: 8px;
     }
 }
 @media screen and (max-width : 850px) {
@@ -148,14 +149,15 @@
     }
     .sticky-note-bottom i{
         font-size: 12px;
+        bottom: 8px;
     }
     .sticky-note-bottom p{
-        font-size: 10px;
+        font-size: 6px;
     }
     .sticky-note-bottom p{
         position: absolute;
         left: 10px;
-        bottom: 8px;
+        bottom: 9px;
         color: #fff;
     }
     .sticky-note-bottom button{

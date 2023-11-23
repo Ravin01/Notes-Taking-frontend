@@ -3,6 +3,9 @@
     height: 100vh;
     background-color: #fff;
 }
+input{
+    font-family: cursive;
+}
 .homeLay-topNav{
     position: fixed;
     top: 0px;

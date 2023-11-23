@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import { useContext, useEffect, useState } from "react";
 import { backEndUrl } from "../../config.js";
 import { ThemeContext } from "../stateManagment/Context.jsx";
+
 
 const Home = () => {
   const [folders, setFolders] = useState([]);

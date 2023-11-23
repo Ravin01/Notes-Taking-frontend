@@ -67,6 +67,9 @@ const handleSetFont3 = ()=>{
     }
   };
 
+const [folderRoute, setFolderRoute] = useState([])
+  
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -102,13 +105,19 @@ const handleSetFont3 = ()=>{
         }}>
           <ThemeContext.Provider value={{themeBlack, themeWhite}}  >
           <Routes>
-            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/home" element={<Home  />} />
             <Route path="/DailyTask" element={<DailyTask />} />
             <Route path="/StickyNotes" element={<StickyNotes isStickAdded={isStickAdded} setStickAdded={setStickAdded} />} />
             <Route path="/StickyNotes/create" element={<CreateNote isStickAdded={isStickAdded} setStickAdded={setStickAdded} />} />
             <Route path="/StickyNotes/view" element={<ViewNote  />} />
             <Route path="/StickyNotes/edit" element={<UpdateNote />} />
             <Route path="/ImportantNotes" element={<ImportantNotes />} />
+
+            {folderRoute.map((d,i)=>(
+                <Route key={i} path={`/${d}`} element={<StickyNotes />} />
+            ))}
+
+
             <Route path="/*" element={<Navigate to={'./page404'} />} />
           </Routes>
           </ThemeContext.Provider>
@@ -125,7 +134,7 @@ const handleSetFont3 = ()=>{
             </div>
           }
       </div>
-      <SideNav sideNavClass={sideNavClass} setSideNavClass={setSideNavClass} setBars={setBars} />
+      <SideNav sideNavClass={sideNavClass} setSideNavClass={setSideNavClass} setBars={setBars} setFolderRoute={setFolderRoute} />
     </div>
   }
     </>

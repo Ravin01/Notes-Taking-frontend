@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/StickyNotes.css";
 import { useContext, useEffect, useState } from "react";
 import { backEndUrl } from "../../config.js";
@@ -10,6 +10,13 @@ const StickyNotes = ({isStickAdded, setStickAdded}) => {
   const { userEmail, accessToken } = JSON.parse(sessionStorage.getItem("user"));
 
   const { themeBlack, themeWhite } = useContext(ThemeContext);
+
+  
+  // Accessing the current URL
+  const location = useLocation();
+  const currentURL = location.pathname;
+
+
 
   const getData = async () => {
     try {
@@ -87,7 +94,9 @@ const StickyNotes = ({isStickAdded, setStickAdded}) => {
               <p className="sticky-note-p">{d.note}</p>
             </Link>
             <div className="sticky-note-bottom">
-              {/* <p>time</p> */}
+              <p>
+              {`${new Date(d.date).getFullYear()}/${new Date(d.date).getMonth()+1}/${new Date(d.date).getDate()},${new Date(d.date).getHours()}:${new Date(d.date).getMinutes()}`}
+              </p>
               <Link  to={`/StickyNotes/edit?id=${d.id}`} className="sticky-edit-link"  style={{
                 color : themeWhite
               }} >
