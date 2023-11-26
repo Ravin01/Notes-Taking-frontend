@@ -73,7 +73,7 @@
 .sideNav-folders ul::-webkit-scrollbar {
   display: none;
 }
-.sideNav-folders-link {
+.sideNav-folders-linkDiv {
   margin: 10px 0px;
   background-color: #242424;
   height: 30px;
@@ -83,11 +83,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-decoration: none;
-  color: #fff;
+  
   overflow-x: hidden;
 }
-.sideNav-folders-link:hover {
+.sideNav-folders-link{
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+}
+.sideNav-folders-linkDiv:hover {
   transform: scale(1.05);
 }
 

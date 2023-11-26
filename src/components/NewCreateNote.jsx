@@ -2,40 +2,41 @@
 import { useContext, useEffect, useState } from "react";
 import "../styles/ViewNote.css";
 import { backEndUrl } from "../../config.js";
-import { Navigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThemeContext } from "../stateManagment/Context.jsx";
 
-const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}) => {
+const NewCreateNote = ({ isStickAdded, setStickAdded, newFolder, setSearchName, setSearchInput }) => {
   const [note, setNote] = useState({
     title: "",
     note: "",
   });
-  const [created, setCreated] = useState(false)
+  const [created, setCreated] = useState(false);
 
   const { themeBlack, themeWhite } = useContext(ThemeContext);
   const applyStyle = {
-    backgroundColor : themeBlack,
-    color : themeWhite
-  }
+    backgroundColor: themeBlack,
+    color: themeWhite,
+  };
 
-
-    // Accessing the current URL
-    const location = useLocation();
-    const currentURL = location.pathname;
-
+  // Accessing the current URL
+  const location = useLocation();
+  const currentURL = location.pathname;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNote({ ...note, [name]: value });
   };
   const handleSubmit = async (e) => {
-    const { userEmail, accessToken } = JSON.parse(sessionStorage.getItem("user"));
+    const { userEmail, accessToken } = JSON.parse(
+      sessionStorage.getItem("user")
+    );
     const dataSet = {
       userEmail: userEmail,
-      notes: [{...note, folder : `${currentURL}`}],
+      notes: [{ ...note, folder: `${currentURL}` }],
     };
+    console.log(dataSet);
     e.preventDefault();
     try {
       const newNote = await fetch(`${backEndUrl}/notes`, {
@@ -43,7 +44,7 @@ const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}
         body: JSON.stringify(dataSet),
         headers: {
           "Content-Type": "application/json",
-          "auth-token" : accessToken
+          "auth-token": accessToken,
         },
       });
       if (newNote) {
@@ -57,9 +58,9 @@ const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}
           progress: undefined,
           theme: "dark",
         });
-  
-        setCreated(true)
-        setStickAdded(!isStickAdded)
+
+        setCreated(true);
+        setStickAdded(!isStickAdded);
       }
     } catch (err) {
       console.log(err);
@@ -68,17 +69,20 @@ const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}
       title: "",
       note: "",
     });
-
   };
+
+  const navigate = useNavigate();
 
   useEffect(()=>{
     setSearchName('not available')
     setSearchInput('')
   },[])
 
-  if(created === true){
-return <Navigate to={'/stickyNotes'} />
+
+  if (created === true) {
+        navigate(`/${newFolder}`);
   }
+
   return (
     <div className="viewNote-container">
       <div className="viewNote-con2">
@@ -103,7 +107,7 @@ return <Navigate to={'/stickyNotes'} />
           required
           style={applyStyle}
         />
-        <button type="button" onClick={handleSubmit} style={applyStyle} >
+        <button type="button" onClick={handleSubmit} style={applyStyle}>
           Create Note
         </button>
       </div>
@@ -123,4 +127,4 @@ return <Navigate to={'/stickyNotes'} />
   );
 };
 
-export default CreateNote;
+export default NewCreateNote;

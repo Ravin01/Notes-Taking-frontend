@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import { useEffect } from "react";
@@ -6,11 +7,10 @@ import { backEndUrl } from "../../config.js";
 import { Link, useSearchParams } from "react-router-dom";
 import { ThemeContext } from "../stateManagment/Context.jsx";
 
-const ViewNote = ({setSearchName, setSearchInput}) => {
+const NewViewNote = ({newFolder, setSearchName, setSearchInput}) => {
   const [params] = useSearchParams()
   const id = params.get('id')
   const [note, setNote] = useState({})
-
   const { themeBlack, themeWhite } = useContext(ThemeContext);
 const applyStyle = {
   backgroundColor : themeBlack,
@@ -19,7 +19,7 @@ const applyStyle = {
 
 const {userEmail, accessToken} = JSON.parse(sessionStorage.getItem('user'))
 const getSingleNote = async()=>{
-    const response = await fetch(`${backEndUrl}/notes/${userEmail}/stickyNotes/${id}`,{
+    const response = await fetch(`${backEndUrl}/notes/${userEmail}/${newFolder}/${id}`,{
       headers : {
         'auth-token' : accessToken
       }
@@ -42,7 +42,7 @@ useEffect(()=>{
       color : themeBlack
     }}>
         <button type="button" style={applyStyle} >
-          <Link to='/stickyNotes' style={{
+          <Link to={`/${newFolder}`} style={{
             color : themeWhite,
             textDecoration : 'none'
           }}><i className="fa-solid fa-arrow-left"></i></Link>
@@ -73,4 +73,4 @@ useEffect(()=>{
   );
 };
 
-export default ViewNote;
+export default NewViewNote;

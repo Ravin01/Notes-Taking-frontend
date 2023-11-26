@@ -5,7 +5,7 @@ import { backEndUrl } from "../../config.js";
 import { Navigate, useSearchParams } from "react-router-dom";
 import { ThemeContext } from "../stateManagment/Context.jsx";
 
-const UpdateNote = () => {
+const UpdateNote = ({setSearchName, setSearchInput}) => {
   const [note, setNote] = useState({});
   const [created, setCreated] = useState(false)
   const [params] = useSearchParams()
@@ -25,7 +25,7 @@ const UpdateNote = () => {
   };
 
   const getSingleNote = async()=>{
-    const response = await fetch(`${backEndUrl}/notes/${userEmail}/${id}`,{
+    const response = await fetch(`${backEndUrl}/notes/${userEmail}/stickyNotes/${id}`,{
       headers : {
         'auth-token' : accessToken
       }
@@ -60,9 +60,15 @@ const UpdateNote = () => {
     }
 
   };
+
+  useEffect(()=>{
+    setSearchName('not available')
+    setSearchInput('')
+  },[])
+
   useEffect(()=>{
     getSingleNote()
-},{})
+},[])
   if(created === true){
 return <Navigate to={'/stickyNotes'} />
   }

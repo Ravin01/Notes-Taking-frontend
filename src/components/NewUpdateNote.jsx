@@ -1,18 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import "../styles/ViewNote.css";
 import { backEndUrl } from "../../config.js";
-import { Navigate, useLocation } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Navigate, useSearchParams } from "react-router-dom";
 import { ThemeContext } from "../stateManagment/Context.jsx";
 
-const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}) => {
-  const [note, setNote] = useState({
-    title: "",
-    note: "",
-  });
+const NewUpdateNote = ({newFolder, setSearchName, setSearchInput}) => {
+  const [note, setNote] = useState({});
   const [created, setCreated] = useState(false)
+  const [params] = useSearchParams()
+  const id = params.get('id')
+
+  const {userEmail, accessToken} = JSON.parse(sessionStorage.getItem('user'))
 
   const { themeBlack, themeWhite } = useContext(ThemeContext);
   const applyStyle = {
@@ -20,54 +20,45 @@ const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}
     color : themeWhite
   }
 
-
-    // Accessing the current URL
-    const location = useLocation();
-    const currentURL = location.pathname;
-
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNote({ ...note, [name]: value });
   };
+
+  const getSingleNote = async()=>{
+    const response = await fetch(`${backEndUrl}/notes/${userEmail}/${newFolder}/${id}`,{
+      headers : {
+        'auth-token' : accessToken
+      }
+    })
+    const view = await response.json()
+    setNote(view)
+}
+
   const handleSubmit = async (e) => {
     const { userEmail, accessToken } = JSON.parse(sessionStorage.getItem("user"));
     const dataSet = {
       userEmail: userEmail,
-      notes: [{...note, folder : `${currentURL}`}],
+      notes: [note],
     };
     e.preventDefault();
     try {
-      const newNote = await fetch(`${backEndUrl}/notes`, {
-        method: "POST",
+      const response = await fetch(`${backEndUrl}/notes/${userEmail}/${id}`, {
+        method: "PUT",
         body: JSON.stringify(dataSet),
         headers: {
           "Content-Type": "application/json",
           "auth-token" : accessToken
         },
       });
-      if (newNote) {
-        toast.success(`Note created successfully`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-  
+      const editNote = response.json()
+      if (editNote) {
+        setNote(editNote)
         setCreated(true)
-        setStickAdded(!isStickAdded)
       }
     } catch (err) {
       console.log(err);
     }
-    setNote({
-      title: "",
-      note: "",
-    });
 
   };
 
@@ -76,9 +67,13 @@ const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}
     setSearchInput('')
   },[])
 
+  useEffect(()=>{
+    getSingleNote()
+},[])
   if(created === true){
-return <Navigate to={'/stickyNotes'} />
+return <Navigate to={`/${newFolder}`} />
   }
+ 
   return (
     <div className="viewNote-container">
       <div className="viewNote-con2">
@@ -104,23 +99,11 @@ return <Navigate to={'/stickyNotes'} />
           style={applyStyle}
         />
         <button type="button" onClick={handleSubmit} style={applyStyle} >
-          Create Note
+          Update
         </button>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
     </div>
   );
 };
 
-export default CreateNote;
+export default NewUpdateNote;

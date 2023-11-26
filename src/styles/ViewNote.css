@@ -26,20 +26,22 @@
 .viewNote-input2{
     height: 60vh;
 }
-.viewNote-con2 button{
-    padding: 8px 15px;
-    border-radius: 8px;
-    background-color: #242424;
-    border: none;
-    color: #fff;
-}
 .viewNote-container button{
-    padding: 8px 15px;
-    border-radius: 8px;
+    padding: 8px 10px;
+    border-radius: 50%;
     background-color: #242424;
     border: none;
     margin-top: 10px;
     color: #fff;
+}
+.viewNote-con2 button{
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #242424;
+    border: none;
+    color: #fff;
+    font-size: 15px;
 }
 
 @media screen and (max-width: 1050px) {
@@ -52,9 +54,9 @@
 
 @media screen and (max-width: 480px) {
     .viewNote-container button{
-        padding: 5px 12px;
-        font-size: 12px;
-        margin-top: 15px;
+        padding: 8px 10px;
+        font-size: 13px;
+        margin-top: 0px;
     }
 }
 

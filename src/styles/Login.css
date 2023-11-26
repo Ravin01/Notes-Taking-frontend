@@ -28,6 +28,8 @@
     padding: 6px 18px;
     font-size: 20px;
     border-radius: 10px;
+    font-weight: 500;
+    font-family: cursive;
     border: none;
     cursor: pointer;
 }
@@ -42,10 +44,35 @@
     color: rgb(55, 55, 240);
     text-decoration: none;
 }
+
+.login-loader-con{
+    width: 120px;
+    background-color: #141414;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    height: 30px;
+    border-radius: 10px;
+  }
+  .login-loader {
+    border: 2px solid transparent;
+    border-top: 2px solid #f3f3f3;
+    border-left: 2px solid #f3f3f3;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.5s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 @media screen and (max-width : 1120px) {
   .form-link{
     width: 100%;
   }
+
 }
 @media screen and (max-width : 750px) {
     .login-container{
@@ -55,5 +82,9 @@
         font-size: 15px;
         padding: 6px 15px;
     }
+    .login-loader-con{
+        width: 100px;
+        font-size: 12px;
+      }
 
 }

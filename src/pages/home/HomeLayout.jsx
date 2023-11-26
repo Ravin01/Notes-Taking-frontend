@@ -12,6 +12,10 @@ import ViewNote from "../../components/ViewNote";
 import UpdateNote from "../../components/UpdateNote";
 import { useEffect, useState } from "react";
 import { ThemeContext } from "../../stateManagment/Context";
+import NewCreateNote from "../../components/NewCreateNote";
+import NewViewNote from "../../components/NewViewNote";
+import NewUpdateNote from "../../components/NewUpdateNote";
+import NewNotes from "../../components/NewNotes";
 
 
 const HomeLayout = () => {
@@ -57,6 +61,7 @@ const handleSetFont3 = ()=>{
       setThemeWhite('#d0d3d4')
     }
   }
+
   const handleOpenSideNav = () => {
     if(bars === 'bars'){
       setBars('x')
@@ -67,8 +72,21 @@ const handleSetFont3 = ()=>{
     }
   };
 
-const [folderRoute, setFolderRoute] = useState([])
-  
+
+const [newFolder, setNewFolder] = useState(null)
+
+const [sideNavFolder, setSideNavFolder] = useState(false)
+
+const [foldersRoute, setFoldersRoute] = useState([])
+
+// search
+const [searchInput, setSearchInput] = useState('') 
+
+const handleSearchInput = (e) =>{
+  setSearchInput(e.target.value)
+}
+
+const [searchName, setSearchName] = useState('folders')
 
   useEffect(() => {
     setTimeout(() => {
@@ -84,11 +102,11 @@ const [folderRoute, setFolderRoute] = useState([])
       color : themeBlack,
       fontFamily : font
     }}>
-      
+
       <div className="homeLay-main">
         <div className="homeLay-topNav">
           <div className="homeLay-search">
-            <input type="text" placeholder="Search here..." />
+            <input type="text" placeholder={`Search ${searchName}...`} value={searchInput} onChange={handleSearchInput} name="searchInput" />
           </div>
           <div className="homeLay-userPreference">
           <i className={`fa-solid fa-${themeIcon}`} onClick={handleChangeTheme} ></i>
@@ -104,22 +122,39 @@ const [folderRoute, setFolderRoute] = useState([])
           backgroundColor : themeWhite
         }}>
           <ThemeContext.Provider value={{themeBlack, themeWhite}}  >
-          <Routes>
-            <Route exact path="/home" element={<Home  />} />
+            
+          <Routes  >
+            <Route exact path="/home" element={<Home  setNewFolder={setNewFolder} searchInput={searchInput} setSearchInput={setSearchInput} setSearchName={setSearchName} setSideNavFolder={setSideNavFolder} sideNavFolder={sideNavFolder} setFoldersRoute={setFoldersRoute} />} />
+            <Route path="/StickyNotes" element={<StickyNotes isStickAdded={isStickAdded} setStickAdded={setStickAdded} setSearchName={setSearchName} searchInput={searchInput} setSearchInput={setSearchInput} />} />
+            <Route path="/StickyNotes/create" element={<CreateNote isStickAdded={isStickAdded} setStickAdded={setStickAdded} setSearchInput={setSearchInput} setSearchName={setSearchName} />} />
+            <Route path="/StickyNotes/view" element={<ViewNote  setSearchInput={setSearchInput} setSearchName={setSearchName} />} />
+            <Route path="/StickyNotes/edit" element={<UpdateNote setSearchInput={setSearchInput} setSearchName={setSearchName} />} />
+
             <Route path="/DailyTask" element={<DailyTask />} />
-            <Route path="/StickyNotes" element={<StickyNotes isStickAdded={isStickAdded} setStickAdded={setStickAdded} />} />
-            <Route path="/StickyNotes/create" element={<CreateNote isStickAdded={isStickAdded} setStickAdded={setStickAdded} />} />
-            <Route path="/StickyNotes/view" element={<ViewNote  />} />
-            <Route path="/StickyNotes/edit" element={<UpdateNote />} />
             <Route path="/ImportantNotes" element={<ImportantNotes />} />
 
-            {folderRoute.map((d,i)=>(
-                <Route key={i} path={`/${d}`} element={<StickyNotes />} />
+            {foldersRoute.map((d,i)=>(
+              <Route key={i}>
+            <Route path={`/${d}`} element={<NewNotes newFolder={newFolder} isStickAdded={isStickAdded} setStickAdded={setStickAdded} setSearchInput={setSearchInput} setSearchName={setSearchName} searchInput={searchInput} setNewFolder={setNewFolder} />} />
+            <Route path={`/${d}/create`} element={<NewCreateNote isStickAdded={isStickAdded} setStickAdded={setStickAdded} newFolder={newFolder} setSearchInput={setSearchInput} setSearchName={setSearchName} />} />
+            <Route path={`/${d}/view`} element={<NewViewNote newFolder={newFolder} setSearchInput={setSearchInput} setSearchName={setSearchName} />}  />
+            <Route path={`/${d}/edit`} element={<NewUpdateNote newFolder={newFolder} setSearchInput={setSearchInput} setSearchName={setSearchName} />}  /> 
+            </Route>
             ))}
-
 
             <Route path="/*" element={<Navigate to={'./page404'} />} />
           </Routes>
+            
+            {/* {folderRoute.map((d,i)=>(
+            <Routes key={i}>
+            <Route path={`/${d}`} element={<NewNotes folderRoute={folderRoute} isStickAdded={isStickAdded} setStickAdded={setStickAdded} />} />
+            <Route path={`/${d}/create`} element={<NewCreateNote isStickAdded={isStickAdded} setStickAdded={setStickAdded} folderRoute={folderRoute} />} />
+            <Route path={`/${d}/view`} element={<NewViewNote />} />
+            <Route path={`/${d}/edit`} element={<NewUpdateNote />} /> 
+            </Routes>
+              ))} */}
+
+
           </ThemeContext.Provider>
           
         </div>
@@ -134,7 +169,7 @@ const [folderRoute, setFolderRoute] = useState([])
             </div>
           }
       </div>
-      <SideNav sideNavClass={sideNavClass} setSideNavClass={setSideNavClass} setBars={setBars} setFolderRoute={setFolderRoute} />
+      <SideNav sideNavClass={sideNavClass} setSideNavClass={setSideNavClass} setBars={setBars}  setNewFolder={setNewFolder} setSearchInput={setSearchInput} sideNavFolder={sideNavFolder} setSideNavFolder={setSideNavFolder} />
     </div>
   }
     </>

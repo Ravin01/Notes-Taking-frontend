@@ -12,12 +12,14 @@ const Register = () => {
     userEmail: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
   const handleSubmit = async (e) => {
     try {
+      setLoading(true);
       e.preventDefault();
       const newUser = await fetch(`${backEndUrl}/register`, {
         method: "POST",
@@ -27,6 +29,7 @@ const Register = () => {
         },
       });
       const userData = await newUser.json();
+      setLoading(false);
       if (newUser.status === 401) {
         toast.error("user Already exists", {
           position: "top-right",
@@ -102,6 +105,21 @@ const Register = () => {
         pauseOnHover
         theme="dark"
       />
+      {loading && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <div className="login-loader-con">
+            <p>Checking</p>
+            <div className="login-loader"></div>
+          </div>
+        </div>
+      )}
       <div className="form-link">
         <p>Already have an Account ? </p>
         <Link to="/auth/login" className="form-link-register">
