@@ -5,7 +5,6 @@ import "../../styles/HomeLayout.css";
 import Home from "../../components/Home";
 import DailyTask from "../../components/DailyTask";
 import StickyNotes from "../../components/StickyNotes";
-import ImportantNotes from "../../components/ImportantNotes";
 import CreateNote from "../../components/CreateNote";
 import Preloader from '../../preloader/Preloader'
 import ViewNote from "../../components/ViewNote";
@@ -16,6 +15,7 @@ import NewCreateNote from "../../components/NewCreateNote";
 import NewViewNote from "../../components/NewViewNote";
 import NewUpdateNote from "../../components/NewUpdateNote";
 import NewNotes from "../../components/NewNotes";
+import Task from "../../components/Task";
 
 
 const HomeLayout = () => {
@@ -124,14 +124,20 @@ const [searchName, setSearchName] = useState('folders')
           <ThemeContext.Provider value={{themeBlack, themeWhite}}  >
             
           <Routes  >
+
             <Route exact path="/home" element={<Home  setNewFolder={setNewFolder} searchInput={searchInput} setSearchInput={setSearchInput} setSearchName={setSearchName} setSideNavFolder={setSideNavFolder} sideNavFolder={sideNavFolder} setFoldersRoute={setFoldersRoute} />} />
             <Route path="/StickyNotes" element={<StickyNotes isStickAdded={isStickAdded} setStickAdded={setStickAdded} setSearchName={setSearchName} searchInput={searchInput} setSearchInput={setSearchInput} />} />
             <Route path="/StickyNotes/create" element={<CreateNote isStickAdded={isStickAdded} setStickAdded={setStickAdded} setSearchInput={setSearchInput} setSearchName={setSearchName} />} />
             <Route path="/StickyNotes/view" element={<ViewNote  setSearchInput={setSearchInput} setSearchName={setSearchName} />} />
             <Route path="/StickyNotes/edit" element={<UpdateNote setSearchInput={setSearchInput} setSearchName={setSearchName} />} />
 
-            <Route path="/DailyTask" element={<DailyTask />} />
-            <Route path="/ImportantNotes" element={<ImportantNotes />} />
+
+
+            <Route path="/DailyTask" element={<DailyTask setSearchName={setSearchName} searchInput={searchInput} setSearchInput={setSearchInput} />} />
+            <Route path="/DailyTask/task" element={<Task />} />
+
+
+
 
             {foldersRoute.map((d,i)=>(
               <Route key={i}>
@@ -141,6 +147,7 @@ const [searchName, setSearchName] = useState('folders')
             <Route path={`/${d}/edit`} element={<NewUpdateNote newFolder={newFolder} setSearchInput={setSearchInput} setSearchName={setSearchName} />}  /> 
             </Route>
             ))}
+
 
             <Route path="/*" element={<Navigate to={'./page404'} />} />
           </Routes>

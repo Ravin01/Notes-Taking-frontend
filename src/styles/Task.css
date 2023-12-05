@@ -1,0 +1,94 @@
+.task-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.task-header{
+    width: 100%;
+}
+.task-header-title{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    height: 70px;
+    padding: 0px 20px 0px 15px;
+}
+.task-header-title h5{
+    font-size: 22px;
+}
+.task-header-title h3{
+    font-size: 25px;
+}
+.task-header-input{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.task-header-input input{
+    width: 40%;
+    height: 40px;
+    padding: 0px 8px;
+    border: none;
+    border-radius: 10px;
+    /* border: 2px solid black; */
+    box-shadow: black 0px 5px 10px;
+}
+.task-header-input button{
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: black 0px 3px 8px;
+    margin: 0px 20px;
+    font-family: cursive;
+}
+.task-header-input button:hover{
+    transform: scale(1.1);
+    box-shadow: black 0px 5px 10px;
+}
+
+.task-header-input input:focus{
+    outline: none;
+}
+.task-body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 40px 0px 20px 0px;
+}
+
+.taskMode-second{
+    width: 100vw;
+}
+
+
+@media screen and (max-width: 768px) {
+    .task-header h5{
+        font-size: 15px;
+    }
+    .task-header h3{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .task-header-input input{
+        width: 50%;
+        height: 30px;
+        padding: 0px 8px;
+    }
+    .task-header-input button{
+        padding: 5px 18px;
+        border-radius: 8px;
+        border: none;
+        box-shadow: black 0px 3px 8px;
+        margin: 0px 20px;
+        font-family: cursive;
+    }
+}
+

@@ -44,7 +44,7 @@ const SideNav = ({
       },
     });
     const folder = await response.json();
-    let trimFolder = folder.folders.slice(3);
+    let trimFolder = folder.folders.slice(2);
     setFolders(trimFolder);
   };
 
@@ -121,16 +121,7 @@ const SideNav = ({
               </Link>
               <i className="fa-solid fa-list-check"></i>
             </div>
-            <div className="sideNav-folders-linkDiv">
-              <Link
-                to="/ImportantNotes"
-                className="sideNav-folders-link"
-                onClick={handleClickLink}
-              >
-                <p>Important Notes</p>
-              </Link>
-              <i className="fa-regular fa-star"></i>
-            </div>
+            
 
             {folders.map((d, i) => (
               <div key={i} className="sideNav-folders-linkDiv">

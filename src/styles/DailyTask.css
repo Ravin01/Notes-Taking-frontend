@@ -1,0 +1,185 @@
+.daily-container{
+    width: 75vw;
+    height: 80vh;
+}
+.daily-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+}
+.daily-header h3{
+    font-size: 25px;
+}
+.daily-create-btn button {
+    cursor: pointer;
+    border: none;
+    background-color: #040404;
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 120px;
+}
+.daily-create-folder{
+    position: absolute;
+    right: 0vw;
+    top: 60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    color: #d0d3d4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #242424;
+    border: 2px solid black;
+}
+.daily-create-folder i{
+    font-size: 80px;
+}
+.daily-create-folder input{
+    height: 25px;
+    width: 130px;
+    border-radius: 8px;
+    border: none;
+    padding: 0px 5px;
+}
+.daily-create-folder input:focus{
+    outline: none;
+}
+.daily-create-folder button{
+    background-color: #d0d3d4;
+    color: #242424;
+    width: 70px;
+}
+.daily-body{
+    overflow: scroll;
+    width: 100%;
+    /* min-height: 35%; */
+    margin: 20px 0px 0px 15px;
+}
+.daily-body::-webkit-scrollbar{
+    display: none;
+}
+.daily-folder{
+    text-decoration: none;
+    color: #242424;
+    width: 95%;
+    height: 60px;
+    text-align: center;
+    margin: 10px;
+    display: flex;
+    padding: 0px 25px 0px 15px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #040404;
+    box-shadow: black 0px 5px 10px;
+}
+.daily-folder:hover{
+    transform: scale(1.02);
+    /* width: 90%; */
+}
+.daily-name-div{
+    display: flex;
+    width: 10vw;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.daily-taskName{
+    font-size: 20px;
+    font-weight: 500;
+}
+.daily-time{
+    font-size: 12px;
+    font-weight: 500;
+}
+.daily-folder i{
+    font-size: 30px;
+}
+
+
+
+@media screen and (max-width: 1050px) {
+    .daily-container{
+        width: 98vw;
+    }
+    .daily-create-folder{
+        right: 2.5vw;
+    }
+    .daily-name-div{
+        width: 15vw;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .daily-header h3{
+        font-size: 20px;
+    }
+    .daily-create-btn button {
+        padding: 5px 10px;
+        font-size: 10px;
+        width: 100px;
+    }
+    .daily-create-folder{
+        width: 150px;
+        height: 150px;
+        top: 40px;
+    }
+    .daily-create-folder i{
+        font-size: 60px;
+    }
+    .daily-create-folder input{
+        height: 20px;
+        width: 100px;
+        border-radius: 5px;
+        border: none;
+        font-size: 12px;
+        padding: 0px 5px;
+    }
+    .daily-create-folder button{
+        background-color: #d0d3d4;
+        color: #242424;
+        width: 50px;
+    }
+    .daily-folder i{
+        font-size: 20px;
+    }
+    .daily-folder p{
+        margin: 3px 0px 0px;
+        font-size: 10px;
+    }
+    .daily-name-div{
+        width: 25vw;
+    }
+}
+
+
+
+@media screen and (max-width : 480px) {
+    .daily-container{
+        width: 100vw;
+    }
+    .daily-folder i{
+        font-size: 15px;
+    }
+    .daily-folder p{
+        margin: 3px 0px 0px;
+        font-size: 10px;
+    }
+    .daily-name-div{
+        width: 25vw;
+    }
+    .daily-body{
+        overflow: scroll;
+        width: 90%;
+        /* min-height: 35%; */
+        margin: 20px 0px 0px 15px;
+    }
+}
