@@ -7,7 +7,7 @@ import Register from "../../components/Register";
 const AuthLayout = () => {
   return (
     <div className="auth-container">
-      <div className="auth-form">
+      <div className="auth-form">  
         <h1>Notes</h1>
         <Routes>
         <Route path="/login" element={<Login />} />

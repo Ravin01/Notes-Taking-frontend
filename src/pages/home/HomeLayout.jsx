@@ -152,7 +152,7 @@ const [searchName, setSearchName] = useState('folders')
             <Route path="/*" element={<Navigate to={'./page404'} />} />
           </Routes>
             
-            {/* {folderRoute.map((d,i)=>(
+            {/* {folderRoute.map((d,i)=>(  
             <Routes key={i}>
             <Route path={`/${d}`} element={<NewNotes folderRoute={folderRoute} isStickAdded={isStickAdded} setStickAdded={setStickAdded} />} />
             <Route path={`/${d}/create`} element={<NewCreateNote isStickAdded={isStickAdded} setStickAdded={setStickAdded} folderRoute={folderRoute} />} />
@@ -160,7 +160,7 @@ const [searchName, setSearchName] = useState('folders')
             <Route path={`/${d}/edit`} element={<NewUpdateNote />} /> 
             </Routes>
               ))} */}
-
+  
 
           </ThemeContext.Provider>
           

@@ -65,7 +65,7 @@ const NewUpdateNote = ({newFolder, setSearchName, setSearchInput}) => {
   useEffect(()=>{
     setSearchName('not available')
     setSearchInput('')
-  },[])
+  },[])  
 
   useEffect(()=>{
     getSingleNote()

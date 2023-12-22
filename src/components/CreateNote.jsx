@@ -9,7 +9,7 @@ import { ThemeContext } from "../stateManagment/Context.jsx";
 
 const CreateNote = ({isStickAdded, setStickAdded, setSearchName, setSearchInput}) => {
   const [note, setNote] = useState({
-    title: "",
+    title: "",  
     note: "",
   });
   const [created, setCreated] = useState(false)

@@ -12,7 +12,7 @@ const Page404 = () => {
         height : '28vh'
     }}>
         <h1>404 Error</h1>
-        <h2>Page not found</h2>
+        <h2>Page not found</h2>  
         <Link to={'/home'} style={{
           padding : '8px 15px',
           backgroundColor : '#242424',
